@@ -1,0 +1,33 @@
+<project default="run" name="sad" basedir=".">
+  <property name="sources" value="src/main/java"/>
+  <property name="classes" value="classes"/>
+  <path id="classpath">
+    <pathelement path="${classes}"/>
+    <fileset dir="/usr/share/java">
+      <include name="gson.jar"/>
+    </fileset>
+  </path>
+  <target name="init">
+    <mkdir dir="${classes}"/>
+  </target>
+  <target name="compile"
+          depends="init">
+    <javac destdir="${classes}"
+           srcdir="${sources}"
+           source="1.5"
+           target="1.5"
+           debug="true"
+           deprecation="true"
+           optimize="false"
+           failonerror="true"
+           includeantruntime="false">
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+  <target name="run" depends="compile">
+    <java classname="org.torproject.sad.ComputeSimilarities">
+      <classpath refid="classpath"/>
+    </java>
+  </target>
+</project>
+
