@@ -38,6 +38,8 @@ Possible similarity metrics are:
 
  - Configured OR port: Are relays using the same OR port?
 
+ - Common fingerprint prefix: how many of the fingerprint bits match starting from most significant bit?  This is relevant to detect attacks on the hidden service hash ring.
+
 Obviously, some of these are easier to game than others, and there's likely not a single metric that indicates a Sybil attack.
 
 ## Getting started
